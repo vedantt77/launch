@@ -35,7 +35,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         });
         if (signUpError) throw signUpError;
 
-        if (data.user) {
+        if (data?.user) {
           await supabase.from('profiles').insert({
             id: data.user.id,
             username,

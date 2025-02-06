@@ -13,10 +13,12 @@ function App() {
   const [showSubmitModal, setShowSubmitModal] = useState(false);
 
   useEffect(() => {
+    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
 
+    // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -28,6 +30,7 @@ function App() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    setSession(null);
   };
 
   return (
@@ -96,4 +99,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

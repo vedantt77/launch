@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowUp, ExternalLink } from 'lucide-react';
-import { format } from 'date <boltAction type="file" filePath="src/components/StartupCard.tsx">import { motion } from 'framer-motion';
-import { ArrowUp, ExternalLink } from 'lucide-react';
 import { format } from 'date-fns';
+import type { Startup } from '../types';
 
 interface StartupCardProps {
-  startup: any;
+  startup: Startup;
   onUpvote: (id: string) => void;
   session: any;
   isOwner?: boolean;

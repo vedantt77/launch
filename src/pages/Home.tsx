@@ -4,14 +4,18 @@ import { Search } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { StartupCard } from '../components/StartupCard';
 import { CountdownTimer } from '../components/CountdownTimer';
-import { differenceInDays } from 'date-fns';
+import type { Startup } from '../types';
 
 type TimeFilter = 'daily' | 'weekly' | 'monthly';
 
-export function Home({ session }) {
+interface HomeProps {
+  session: any;
+}
+
+export function Home({ session }: HomeProps) {
   const [timeFilter, setTimeFilter] = useState<TimeFilter>('daily');
   const [searchQuery, setSearchQuery] = useState('');
-  const [startups, setStartups] = useState([]);
+  const [startups, setStartups] = useState<Startup[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

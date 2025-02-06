@@ -1,9 +1,21 @@
 export interface Startup {
-  id: number;
+  id: string;
   name: string;
   description: string;
-  logo: string;
+  logo_url: string;
   website: string;
-  upvotes: number;
-  createdAt: Date;
+  launch_date: string;
+  user_id: string;
+  created_at: string;
+  profiles?: {
+    username: string;
+  };
+  upvotes?: Array<{ count: number }>;
+}
+
+export interface Profile {
+  id: string;
+  username: string;
+  avatar_url?: string;
+  created_at: string;
 }

@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { StartupCard } from '../components/StartupCard';
+import type { Startup, Profile } from '../types';
 
-export function Profile({ session }) {
-  const [startups, setStartups] = useState([]);
+interface ProfileProps {
+  session: any;
+}
+
+export function Profile({ session }: ProfileProps) {
+  const [startups, setStartups] = useState<Startup[]>([]);
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
     if (session) {
